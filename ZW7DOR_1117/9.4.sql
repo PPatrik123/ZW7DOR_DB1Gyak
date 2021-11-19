@@ -1,0 +1,22 @@
+CREATE DATABASE ZW7DOR;
+USE ZW7DOR;
+CREATE TABLE GYARTO(adoszam INT PRIMARY KEY, nev CHAR(30) NOT NULL, telephely CHAR(50));
+CREATE TABLE TERMEK(tkod INT PRIMARY KEY, nev CHAR(30) NOT NULL, ear INT CHECK(ear>0), gyarto INT REFERENCES GYARTO);
+
+INSERT INTO GYARTO VALUES(00000000, "tesco", 4000, NULL, NULL);
+INSERT INTO GYARTO VALUES(11111111, "auchan", 2000, "Miskolc", "Károly utca");
+INSERT INTO GYARTO VALUES(22222222, "real", 5300, NULL, NULL);
+INSERT INTO GYARTO VALUES(33333333, "coop", 1000, NULL, NULL);
+
+ALTER TABLE termek ADD (kategoria CHAR(50));
+
+INSERT INTO TERMEK VALUES(0, "egér", 5000, 00000000,"elektronika");
+INSERT INTO TERMEK VALUES(1, "kapa", 2000, 11111111,"kertészet");
+INSERT INTO TERMEK VALUES(2, "virág", 3000, 00000000,"kertészet");
+INSERT INTO TERMEK VALUES(3, "lcd kijelző", 15000, 00000000, "elektronika");
+INSERT INTO TERMEK VALUES(4, "kanapé", 10000, 11111111, "mindennapok");
+INSERT INTO TERMEK VALUES(5, "szarkofág", 300, 44444444, "mindennapok");
+
+CREATE VIEW kgy AS SELECT g.adoszam, t.kategoria FROM gyarto g LEFT OUTER JOIN termek t ON g.adoszam = t.gyarto GROUP BY g.adoszam, t.kategoria;
+CREATE VIEW kgy2 AS SELECT kategoria, COUNT(adoszam) db FROM kgy GROUP BY kategoria;
+SELECT kategoria FROM kgy2 WHERE db = (SELECT COUNT(*) FROM gyarto);
