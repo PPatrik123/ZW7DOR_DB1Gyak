@@ -1,0 +1,12 @@
+CREATE database ZW7DOR ;
+USE ZW7DOR;
+CREATE TABLE Etterem (EtteremID INT NOT NULL primary key,Nyitvatartas VARCHAR(20),Nev VARCHAR(30),Telefonszam INT,Weboldal VARCHAR(40));
+CREATE TABLE Beszallito (BeszallitoID INT NOT NULL primary key,Elerhetoseg VARCHAR(50),Nev VARCHAR(30),Varos VARCHAR(30),Iranyitoszam INT,Utca VARCHAR(30),Hazszam INT);
+CREATE TABLE Futar (FutarID INT NOT NULL primary key ,Nev VARCHAR(30),Telefonszam INT,EtteremFK INT references Etterem);
+CREATE TABLE Etel (EtelID INT NOT NULL primary key,Teljes_ar VARCHAR(7),Etel_neve VARCHAR(35),EtteremIDFK INT references Etterem(EtteremID));
+CREATE TABLE Vevo (VevoID INT NOT NULL primary key,Nev VARCHAR(30),Telefonszam INT,Varos VARCHAR(30),Iranyitoszam INT,Utca VARCHAR(30),Hazszam INT);
+CREATE TABLE Bankkartya (Kartyaszam BIGINT NOT NULL primary key,Bank VARCHAR(30),Lejarati_datum DATE,Tipus VARCHAR(20),VevoIDFK INT references Vevo(VevoID));														
+CREATE TABLE Hozzavalok (Hozzavalok VARCHAR(25) primary key,EtelIDFK INT references Etel(EtelID));
+CREATE TABLE Mennyiseg (Mennyiseg VARCHAR(20) primary key,EtelIDFK INT references Etel(EtelID));
+CREATE TABLE Rendeles (RendelesID INT NOT NULL primary key ,EtelIDFK INT references Etel(EtelID),VevoIDFK INT references Vevo(VevoID));
+CREATE TABLE Beszallitas(BeszallitID int primary key, datum date, hozzavalo varchar(15), EtteremIDFK INT references Etterem(EtteremID) ,BeszallitoIDFK INT references beszallito(beszallitoID));
