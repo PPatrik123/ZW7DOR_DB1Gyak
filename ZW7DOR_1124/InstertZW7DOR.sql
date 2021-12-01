@@ -1,0 +1,25 @@
+CREATE DATABASE ZW7DOR;
+USE ZW7DOR;
+
+INSERT INTO Oktató  VALUES ('TZW231', 'Papp Tibor', 'Matematikai tanszék');
+INSERT INTO Oktató  VALUES ('ZTW321', 'Tibor Papp', 'Informatikai tanszék');
+INSERT INTO Oktató  VALUES ('ZAT123', 'Berta Attila', 'Matematikai tanszék');
+INSERT INTO Oktató  VALUES ('TSA312', 'Demény Tamás', 'Matematikai tanszék');
+INSERT INTO Oktató  VALUES ('WAR123', 'Berta Erik', 'Informatikai tanszék');
+INSERT INTO Oktató  VALUES ('TAL312', 'Szántó Dominik', 'Matematikai tanszék');
+INSERT INTO Tárgy VALUES ('MAT-NA1', '5', 'Numerikus Analizis');
+INSERT INTO Tárgy VALUES ('MAT-NA2', '5', 'Fizika I.');
+INSERT INTO Tárgy VALUES ('INF-PA', '5', 'Programozás Alapjai');
+INSERT INTO Tárgy VALUES ('INF-OOP', '5', 'Objektum Orientált Programozás');
+INSERT INTO Tárgy  VALUES ('INF-DB1', '5', 'Lineális Algebra.');
+INSERT INTO Tárgy VALUES ('INF-DB2', '5', 'Opercáiós rendszerek.');
+INSERT INTO Hallgató  VALUES ('TAL311', 'Papp Tibor', 'GEIK', '2000.08.12', 21, 3531, 'Kazincbarcika', 'Aba Utca', '3');
+INSERT INTO Hallgató  VALUES ('ZTW321', 'Tibor Papp', 'GEIK', '2001.02.05', 20, 3600, 'Gönc', 'Nemzetőr út', '8 3/1');
+INSERT INTO oktat  VALUES ('TZW231', 'MAT-NA1');
+INSERT INTO oktat  VALUES ('TZW231', 'MAT-NA2');
+INSERT INTO oktat  VALUES ('ZAT123', 'INF-PA');
+INSERT INTO oktat  VALUES ('TAL312', 'INF-OOP');
+INSERT INTO oktat  VALUES ('ZAT123', 'INF-DB1');
+INSERT INTO oktat  VALUES ('TAL312', 'INF-DB2');
+INSERT INTO hallgat VALUES (1,5, 'INF-PA','TAL311' );
+INSERT INTO hallgat VALUES (1,5, 'MAT-NA1','TAL311');
